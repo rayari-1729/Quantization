@@ -1,0 +1,407 @@
+Not using distributed mode
+Namespace(aa='rand-m9-mstd0.5-inc1', auto_resume=True, batch_size=64, clip_grad=None, color_jitter=0.4, crop_pct=None, cutmix=1.0, cutmix_minmax=None, data_path='/home/ava/DATASET/Imagenet/imagenet-1k/', data_set='IMNET', device='cuda', disable_eval=False, dist_eval=True, dist_on_itp=False, dist_url='env://', distributed=False, drop_path=0.2, enable_wandb=False, epochs=300, eval=True, eval_data_path=None, finetune='', head_init_scale=1.0, imagenet_default_mean_and_std=True, input_size=224, layer_decay=1.0, layer_scale_init_value=1e-06, local_rank=-1, log_dir=None, lr=0.004, min_lr=1e-06, mixup=0.8, mixup_mode='batch', mixup_prob=1.0, mixup_switch_prob=0.5, model='convnext_base', model_ema=False, model_ema_decay=0.9999, model_ema_eval=False, model_ema_force_cpu=False, model_key='model|module', model_prefix='', momentum=0.9, nb_classes=1000, num_workers=1, opt='adamw', opt_betas=None, opt_eps=1e-08, output_dir='', pin_mem=True, project='convnext', recount=1, remode='pixel', reprob=0.25, resplit=False, resume='https://dl.fbaipublicfiles.com/convnext/convnext_base_22k_1k_224.pth', save_ckpt=True, save_ckpt_freq=1, save_ckpt_num=3, seed=0, smoothing=0.1, start_epoch=0, train_interpolation='bicubic', update_freq=1, use_amp=False, wandb_ckpt=False, warmup_epochs=20, warmup_steps=-1, weight_decay=0.05, weight_decay_end=None, world_size=1)
+Transform = 
+RandomResizedCropAndInterpolation(size=(224, 224), scale=(0.08, 1.0), ratio=(0.75, 1.3333), interpolation=PIL.Image.BICUBIC)
+RandomHorizontalFlip(p=0.5)
+<timm.data.auto_augment.RandAugment object at 0x7f0acad82e80>
+ToTensor()
+Normalize(mean=tensor([0.4850, 0.4560, 0.4060]), std=tensor([0.2290, 0.2240, 0.2250]))
+<timm.data.random_erasing.RandomErasing object at 0x7f0acad82940>
+---------------------------
+reading from datapath /home/ava/DATASET/Imagenet/imagenet-1k/
+Number of the class = 1000
+Transform = 
+Resize(size=256, interpolation=bicubic, max_size=None, antialias=None)
+CenterCrop(size=(224, 224))
+ToTensor()
+Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))
+---------------------------
+reading from datapath /home/ava/DATASET/Imagenet/imagenet-1k/
+Number of the class = 1000
+Sampler_train = <torch.utils.data.distributed.DistributedSampler object at 0x7f0acad82460>
+Mixup is activated!
+Batch size = 128
+Update frequent = 1
+Resume checkpoint https://dl.fbaipublicfiles.com/convnext/convnext_base_22k_1k_224.pth
+Passing model to JIT Trace
+------------------------------------
+
+Passing model to Model Validator
+2022-10-11 13:48:09,860 - root - INFO - aimetpro-release-1.22.1_Build_Id_0.155.0.3316.torch-gpu-release
+2022-10-11 13:48:09,874 - Utils - INFO - Running validator check <function validate_for_reused_modules at 0x7f0ab98ad9d0>
+2022-10-11 13:48:09,884 - Utils - INFO - Running validator check <function validate_for_missing_modules at 0x7f0ab99f0160>
+2022-10-11 13:48:10,476 - Utils - WARNING - Functional ops were found in the model. Different AIMET features will expect ops of certain types to be defined as torch.nn modules.
+AIMET features which operate on the op may not work as intended. As an example, quantsim will not be able to wrap functional ops and simulate quantization noise for them.
+Consider the following choices: 
+1. The op can be redefined as a torch.nn.Module in the class definition.
+2. The op can remain as a functional op due to not being an op type of interest, but the op type has not been added to ConnectedGraph.functional_ops. 
+Add an entry to ignore the op.
+The following functional ops were found. The parent module is named for ease of locating the ops within the model definition.
+permute_3            parent module: stages.0.0
+Mul_8                parent module: stages.0.0
+permute_9            parent module: stages.0.0
+Add_10               parent module: stages.0.0
+permute_12           parent module: stages.0.1
+Mul_17               parent module: stages.0.1
+permute_18           parent module: stages.0.1
+Add_20               parent module: stages.0.1
+permute_22           parent module: stages.0.2
+Mul_27               parent module: stages.0.2
+permute_28           parent module: stages.0.2
+Add_30               parent module: stages.0.2
+permute_34           parent module: stages.1.0
+Mul_39               parent module: stages.1.0
+permute_40           parent module: stages.1.0
+Add_42               parent module: stages.1.0
+permute_44           parent module: stages.1.1
+Mul_49               parent module: stages.1.1
+permute_50           parent module: stages.1.1
+Add_52               parent module: stages.1.1
+permute_54           parent module: stages.1.2
+Mul_59               parent module: stages.1.2
+permute_60           parent module: stages.1.2
+Add_62               parent module: stages.1.2
+permute_66           parent module: stages.2.0
+Mul_71               parent module: stages.2.0
+permute_72           parent module: stages.2.0
+Add_74               parent module: stages.2.0
+permute_76           parent module: stages.2.1
+Mul_81               parent module: stages.2.1
+permute_82           parent module: stages.2.1
+Add_84               parent module: stages.2.1
+permute_86           parent module: stages.2.2
+Mul_91               parent module: stages.2.2
+permute_92           parent module: stages.2.2
+Add_94               parent module: stages.2.2
+permute_96           parent module: stages.2.3
+Mul_101              parent module: stages.2.3
+permute_102          parent module: stages.2.3
+Add_104              parent module: stages.2.3
+permute_106          parent module: stages.2.4
+Mul_111              parent module: stages.2.4
+permute_112          parent module: stages.2.4
+Add_114              parent module: stages.2.4
+permute_116          parent module: stages.2.5
+Mul_121              parent module: stages.2.5
+permute_122          parent module: stages.2.5
+Add_124              parent module: stages.2.5
+permute_126          parent module: stages.2.6
+Mul_131              parent module: stages.2.6
+permute_132          parent module: stages.2.6
+Add_134              parent module: stages.2.6
+permute_136          parent module: stages.2.7
+Mul_141              parent module: stages.2.7
+permute_142          parent module: stages.2.7
+Add_144              parent module: stages.2.7
+permute_146          parent module: stages.2.8
+Mul_151              parent module: stages.2.8
+permute_152          parent module: stages.2.8
+Add_154              parent module: stages.2.8
+permute_156          parent module: stages.2.9
+Mul_161              parent module: stages.2.9
+permute_162          parent module: stages.2.9
+Add_164              parent module: stages.2.9
+permute_166          parent module: stages.2.10
+Mul_171              parent module: stages.2.10
+permute_172          parent module: stages.2.10
+Add_174              parent module: stages.2.10
+permute_176          parent module: stages.2.11
+Mul_181              parent module: stages.2.11
+permute_182          parent module: stages.2.11
+Add_184              parent module: stages.2.11
+permute_186          parent module: stages.2.12
+Mul_191              parent module: stages.2.12
+permute_192          parent module: stages.2.12
+Add_194              parent module: stages.2.12
+permute_196          parent module: stages.2.13
+Mul_201              parent module: stages.2.13
+permute_202          parent module: stages.2.13
+Add_204              parent module: stages.2.13
+permute_206          parent module: stages.2.14
+Mul_211              parent module: stages.2.14
+permute_212          parent module: stages.2.14
+Add_214              parent module: stages.2.14
+permute_216          parent module: stages.2.15
+Mul_221              parent module: stages.2.15
+permute_222          parent module: stages.2.15
+Add_224              parent module: stages.2.15
+permute_226          parent module: stages.2.16
+Mul_231              parent module: stages.2.16
+permute_232          parent module: stages.2.16
+Add_234              parent module: stages.2.16
+permute_236          parent module: stages.2.17
+Mul_241              parent module: stages.2.17
+permute_242          parent module: stages.2.17
+Add_244              parent module: stages.2.17
+permute_246          parent module: stages.2.18
+Mul_251              parent module: stages.2.18
+permute_252          parent module: stages.2.18
+Add_254              parent module: stages.2.18
+permute_256          parent module: stages.2.19
+Mul_261              parent module: stages.2.19
+permute_262          parent module: stages.2.19
+Add_264              parent module: stages.2.19
+permute_266          parent module: stages.2.20
+Mul_271              parent module: stages.2.20
+permute_272          parent module: stages.2.20
+Add_274              parent module: stages.2.20
+permute_276          parent module: stages.2.21
+Mul_281              parent module: stages.2.21
+permute_282          parent module: stages.2.21
+Add_284              parent module: stages.2.21
+permute_286          parent module: stages.2.22
+Mul_291              parent module: stages.2.22
+permute_292          parent module: stages.2.22
+Add_294              parent module: stages.2.22
+permute_296          parent module: stages.2.23
+Mul_301              parent module: stages.2.23
+permute_302          parent module: stages.2.23
+Add_304              parent module: stages.2.23
+permute_306          parent module: stages.2.24
+Mul_311              parent module: stages.2.24
+permute_312          parent module: stages.2.24
+Add_314              parent module: stages.2.24
+permute_316          parent module: stages.2.25
+Mul_321              parent module: stages.2.25
+permute_322          parent module: stages.2.25
+Add_324              parent module: stages.2.25
+permute_326          parent module: stages.2.26
+Mul_331              parent module: stages.2.26
+permute_332          parent module: stages.2.26
+Add_334              parent module: stages.2.26
+permute_338          parent module: stages.3.0
+Mul_343              parent module: stages.3.0
+permute_344          parent module: stages.3.0
+Add_346              parent module: stages.3.0
+permute_348          parent module: stages.3.1
+Mul_353              parent module: stages.3.1
+permute_354          parent module: stages.3.1
+Add_356              parent module: stages.3.1
+permute_358          parent module: stages.3.2
+Mul_363              parent module: stages.3.2
+permute_364          parent module: stages.3.2
+Add_366              parent module: stages.3.2
+
+2022-10-11 13:48:10,477 - Utils - INFO - The following validator checks failed:
+2022-10-11 13:48:10,477 - Utils - INFO - 	<function validate_for_missing_modules at 0x7f0ab99f0160>
+------------------------------------
+Passing model to prepare_model api
+2022-10-11 13:48:10,738 - Quant - INFO - Functional         : Adding new module for node: {mul} 
+2022-10-11 13:48:10,738 - Quant - INFO - Functional         : Adding new module for node: {add} 
+2022-10-11 13:48:10,738 - Quant - INFO - Functional         : Adding new module for node: {mul_1} 
+2022-10-11 13:48:10,738 - Quant - INFO - Functional         : Adding new module for node: {add_1} 
+2022-10-11 13:48:10,738 - Quant - INFO - Functional         : Adding new module for node: {mul_2} 
+2022-10-11 13:48:10,739 - Quant - INFO - Functional         : Adding new module for node: {add_2} 
+2022-10-11 13:48:10,739 - Quant - INFO - Functional         : Adding new module for node: {mul_3} 
+2022-10-11 13:48:10,739 - Quant - INFO - Functional         : Adding new module for node: {add_3} 
+2022-10-11 13:48:10,739 - Quant - INFO - Functional         : Adding new module for node: {mul_4} 
+2022-10-11 13:48:10,739 - Quant - INFO - Functional         : Adding new module for node: {add_4} 
+2022-10-11 13:48:10,739 - Quant - INFO - Functional         : Adding new module for node: {mul_5} 
+2022-10-11 13:48:10,740 - Quant - INFO - Functional         : Adding new module for node: {add_5} 
+2022-10-11 13:48:10,740 - Quant - INFO - Functional         : Adding new module for node: {mul_6} 
+2022-10-11 13:48:10,740 - Quant - INFO - Functional         : Adding new module for node: {add_6} 
+2022-10-11 13:48:10,740 - Quant - INFO - Functional         : Adding new module for node: {mul_7} 
+2022-10-11 13:48:10,740 - Quant - INFO - Functional         : Adding new module for node: {add_7} 
+2022-10-11 13:48:10,740 - Quant - INFO - Functional         : Adding new module for node: {mul_8} 
+2022-10-11 13:48:10,741 - Quant - INFO - Functional         : Adding new module for node: {add_8} 
+2022-10-11 13:48:10,741 - Quant - INFO - Functional         : Adding new module for node: {mul_9} 
+2022-10-11 13:48:10,741 - Quant - INFO - Functional         : Adding new module for node: {add_9} 
+2022-10-11 13:48:10,741 - Quant - INFO - Functional         : Adding new module for node: {mul_10} 
+2022-10-11 13:48:10,741 - Quant - INFO - Functional         : Adding new module for node: {add_10} 
+2022-10-11 13:48:10,741 - Quant - INFO - Functional         : Adding new module for node: {mul_11} 
+2022-10-11 13:48:10,742 - Quant - INFO - Functional         : Adding new module for node: {add_11} 
+2022-10-11 13:48:10,742 - Quant - INFO - Functional         : Adding new module for node: {mul_12} 
+2022-10-11 13:48:10,742 - Quant - INFO - Functional         : Adding new module for node: {add_12} 
+2022-10-11 13:48:10,742 - Quant - INFO - Functional         : Adding new module for node: {mul_13} 
+2022-10-11 13:48:10,742 - Quant - INFO - Functional         : Adding new module for node: {add_13} 
+2022-10-11 13:48:10,742 - Quant - INFO - Functional         : Adding new module for node: {mul_14} 
+2022-10-11 13:48:10,743 - Quant - INFO - Functional         : Adding new module for node: {add_14} 
+2022-10-11 13:48:10,743 - Quant - INFO - Functional         : Adding new module for node: {mul_15} 
+2022-10-11 13:48:10,743 - Quant - INFO - Functional         : Adding new module for node: {add_15} 
+2022-10-11 13:48:10,743 - Quant - INFO - Functional         : Adding new module for node: {mul_16} 
+2022-10-11 13:48:10,743 - Quant - INFO - Functional         : Adding new module for node: {add_16} 
+2022-10-11 13:48:10,743 - Quant - INFO - Functional         : Adding new module for node: {mul_17} 
+2022-10-11 13:48:10,743 - Quant - INFO - Functional         : Adding new module for node: {add_17} 
+2022-10-11 13:48:10,744 - Quant - INFO - Functional         : Adding new module for node: {mul_18} 
+2022-10-11 13:48:10,744 - Quant - INFO - Functional         : Adding new module for node: {add_18} 
+2022-10-11 13:48:10,744 - Quant - INFO - Functional         : Adding new module for node: {mul_19} 
+2022-10-11 13:48:10,744 - Quant - INFO - Functional         : Adding new module for node: {add_19} 
+2022-10-11 13:48:10,744 - Quant - INFO - Functional         : Adding new module for node: {mul_20} 
+2022-10-11 13:48:10,745 - Quant - INFO - Functional         : Adding new module for node: {add_20} 
+2022-10-11 13:48:10,745 - Quant - INFO - Functional         : Adding new module for node: {mul_21} 
+2022-10-11 13:48:10,745 - Quant - INFO - Functional         : Adding new module for node: {add_21} 
+2022-10-11 13:48:10,745 - Quant - INFO - Functional         : Adding new module for node: {mul_22} 
+2022-10-11 13:48:10,745 - Quant - INFO - Functional         : Adding new module for node: {add_22} 
+2022-10-11 13:48:10,745 - Quant - INFO - Functional         : Adding new module for node: {mul_23} 
+2022-10-11 13:48:10,745 - Quant - INFO - Functional         : Adding new module for node: {add_23} 
+2022-10-11 13:48:10,746 - Quant - INFO - Functional         : Adding new module for node: {mul_24} 
+2022-10-11 13:48:10,746 - Quant - INFO - Functional         : Adding new module for node: {add_24} 
+2022-10-11 13:48:10,746 - Quant - INFO - Functional         : Adding new module for node: {mul_25} 
+2022-10-11 13:48:10,746 - Quant - INFO - Functional         : Adding new module for node: {add_25} 
+2022-10-11 13:48:10,746 - Quant - INFO - Functional         : Adding new module for node: {mul_26} 
+2022-10-11 13:48:10,746 - Quant - INFO - Functional         : Adding new module for node: {add_26} 
+2022-10-11 13:48:10,747 - Quant - INFO - Functional         : Adding new module for node: {mul_27} 
+2022-10-11 13:48:10,747 - Quant - INFO - Functional         : Adding new module for node: {add_27} 
+2022-10-11 13:48:10,747 - Quant - INFO - Functional         : Adding new module for node: {mul_28} 
+2022-10-11 13:48:10,747 - Quant - INFO - Functional         : Adding new module for node: {add_28} 
+2022-10-11 13:48:10,747 - Quant - INFO - Functional         : Adding new module for node: {mul_29} 
+2022-10-11 13:48:10,747 - Quant - INFO - Functional         : Adding new module for node: {add_29} 
+2022-10-11 13:48:10,748 - Quant - INFO - Functional         : Adding new module for node: {mul_30} 
+2022-10-11 13:48:10,748 - Quant - INFO - Functional         : Adding new module for node: {add_30} 
+2022-10-11 13:48:10,748 - Quant - INFO - Functional         : Adding new module for node: {mul_31} 
+2022-10-11 13:48:10,748 - Quant - INFO - Functional         : Adding new module for node: {add_31} 
+2022-10-11 13:48:10,748 - Quant - INFO - Functional         : Adding new module for node: {mul_32} 
+2022-10-11 13:48:10,748 - Quant - INFO - Functional         : Adding new module for node: {add_32} 
+2022-10-11 13:48:10,749 - Quant - INFO - Functional         : Adding new module for node: {mul_33} 
+2022-10-11 13:48:10,749 - Quant - INFO - Functional         : Adding new module for node: {add_33} 
+2022-10-11 13:48:10,749 - Quant - INFO - Functional         : Adding new module for node: {mul_34} 
+2022-10-11 13:48:10,749 - Quant - INFO - Functional         : Adding new module for node: {add_34} 
+2022-10-11 13:48:10,749 - Quant - INFO - Functional         : Adding new module for node: {mul_35} 
+2022-10-11 13:48:10,749 - Quant - INFO - Functional         : Adding new module for node: {add_35} 
+------------------------------------
+
+Passing model to Model Validator
+2022-10-11 13:48:10,854 - Utils - INFO - Running validator check <function validate_for_reused_modules at 0x7f0ab98ad9d0>
+2022-10-11 13:48:10,866 - Utils - INFO - Running validator check <function validate_for_missing_modules at 0x7f0ab99f0160>
+2022-10-11 13:48:11,709 - Utils - WARNING - Functional ops were found in the model. Different AIMET features will expect ops of certain types to be defined as torch.nn modules.
+AIMET features which operate on the op may not work as intended. As an example, quantsim will not be able to wrap functional ops and simulate quantization noise for them.
+Consider the following choices: 
+1. The op can be redefined as a torch.nn.Module in the class definition.
+2. The op can remain as a functional op due to not being an op type of interest, but the op type has not been added to ConnectedGraph.functional_ops. 
+Add an entry to ignore the op.
+The following functional ops were found. The parent module is named for ease of locating the ops within the model definition.
+permute_3            parent module: 
+permute_9            parent module: 
+permute_12           parent module: 
+permute_18           parent module: 
+permute_21           parent module: 
+permute_27           parent module: 
+permute_32           parent module: 
+permute_38           parent module: 
+permute_41           parent module: 
+permute_47           parent module: 
+permute_50           parent module: 
+permute_56           parent module: 
+permute_61           parent module: 
+permute_67           parent module: 
+permute_70           parent module: 
+permute_76           parent module: 
+permute_79           parent module: 
+permute_85           parent module: 
+permute_88           parent module: 
+permute_94           parent module: 
+permute_97           parent module: 
+permute_103          parent module: 
+permute_106          parent module: 
+permute_112          parent module: 
+permute_115          parent module: 
+permute_121          parent module: 
+permute_124          parent module: 
+permute_130          parent module: 
+permute_133          parent module: 
+permute_139          parent module: 
+permute_142          parent module: 
+permute_148          parent module: 
+permute_151          parent module: 
+permute_157          parent module: 
+permute_160          parent module: 
+permute_166          parent module: 
+permute_169          parent module: 
+permute_175          parent module: 
+permute_178          parent module: 
+permute_184          parent module: 
+permute_187          parent module: 
+permute_193          parent module: 
+permute_196          parent module: 
+permute_202          parent module: 
+permute_205          parent module: 
+permute_211          parent module: 
+permute_214          parent module: 
+permute_220          parent module: 
+permute_223          parent module: 
+permute_229          parent module: 
+permute_232          parent module: 
+permute_238          parent module: 
+permute_241          parent module: 
+permute_247          parent module: 
+permute_250          parent module: 
+permute_256          parent module: 
+permute_259          parent module: 
+permute_265          parent module: 
+permute_268          parent module: 
+permute_274          parent module: 
+permute_277          parent module: 
+permute_283          parent module: 
+permute_286          parent module: 
+permute_292          parent module: 
+permute_295          parent module: 
+permute_301          parent module: 
+permute_306          parent module: 
+permute_312          parent module: 
+permute_315          parent module: 
+permute_321          parent module: 
+permute_324          parent module: 
+permute_330          parent module: 
+
+2022-10-11 13:48:11,709 - Utils - INFO - The following validator checks failed:
+2022-10-11 13:48:11,709 - Utils - INFO - 	<function validate_for_missing_modules at 0x7f0ab99f0160>
+---------------- **************************** --------------------
+
+==================>Model Validation Before Passing into AutoQuant=============>
+/home/ava/anaconda3/envs/convnext1.22pro/lib/python3.8/site-packages/torch/fx/graph.py:606: UserWarning: Attempted to insert a call_module Node with no underlying reference in the owning GraphModule! Call GraphModule.add_submodule to add the necessary submodule
+  warnings.warn("Attempted to insert a call_module Node with "
+Test:  [  0/521]  eta: 0:09:39  acc1: 93.0000 (93.0000)  acc5: 95.0000 (95.0000)  time: 1.1115  data: 0.6338  max mem: 3575
+Test:  [ 10/521]  eta: 0:04:46  acc1: 92.0000 (91.0000)  acc5: 96.0000 (95.4545)  time: 0.5598  data: 0.1627  max mem: 3575
+Test:  [ 20/521]  eta: 0:04:34  acc1: 88.0000 (86.9524)  acc5: 95.0000 (95.2857)  time: 0.5194  data: 0.1303  max mem: 3575
+Test:  [ 30/521]  eta: 0:04:23  acc1: 83.0000 (85.3871)  acc5: 95.0000 (94.9677)  time: 0.5247  data: 0.1352  max mem: 3575
+Test:  [ 40/521]  eta: 0:04:18  acc1: 81.0000 (83.3659)  acc5: 94.0000 (94.5610)  time: 0.5261  data: 0.1356  max mem: 3575
+Test:  [ 50/521]  eta: 0:04:08  acc1: 88.0000 (85.0588)  acc5: 95.0000 (94.7451)  time: 0.5142  data: 0.1229  max mem: 3575
+Test:  [ 60/521]  eta: 0:04:00  acc1: 90.0000 (85.6557)  acc5: 95.0000 (94.8033)  time: 0.4914  data: 0.0999  max mem: 3575
+Test:  [ 70/521]  eta: 0:03:56  acc1: 89.0000 (85.9577)  acc5: 95.0000 (94.8873)  time: 0.5187  data: 0.1267  max mem: 3575
+Test:  [ 80/521]  eta: 0:03:50  acc1: 91.0000 (86.5432)  acc5: 95.0000 (94.9136)  time: 0.5240  data: 0.1316  max mem: 3575
+Test:  [ 90/521]  eta: 0:03:43  acc1: 85.0000 (85.7253)  acc5: 95.0000 (94.7033)  time: 0.4926  data: 0.0997  max mem: 3575
+Test:  [100/521]  eta: 0:03:37  acc1: 83.0000 (85.3168)  acc5: 94.0000 (94.5743)  time: 0.4961  data: 0.1026  max mem: 3575
+Test:  [110/521]  eta: 0:03:31  acc1: 84.0000 (85.2883)  acc5: 94.0000 (94.5045)  time: 0.4980  data: 0.1045  max mem: 3575
+Test:  [120/521]  eta: 0:03:25  acc1: 85.0000 (85.1240)  acc5: 94.0000 (94.4463)  time: 0.4897  data: 0.0959  max mem: 3575
+Test:  [130/521]  eta: 0:03:19  acc1: 83.0000 (84.5954)  acc5: 94.0000 (94.4504)  time: 0.4874  data: 0.0934  max mem: 3575
+Test:  [140/521]  eta: 0:03:14  acc1: 86.0000 (84.7943)  acc5: 95.0000 (94.4752)  time: 0.4939  data: 0.0994  max mem: 3575
+Test:  [150/521]  eta: 0:03:09  acc1: 85.0000 (84.3974)  acc5: 95.0000 (94.4172)  time: 0.5180  data: 0.1225  max mem: 3575
+Test:  [160/521]  eta: 0:03:05  acc1: 84.0000 (84.5528)  acc5: 95.0000 (94.4472)  time: 0.5343  data: 0.1385  max mem: 3575
+Test:  [170/521]  eta: 0:03:00  acc1: 89.0000 (84.7193)  acc5: 95.0000 (94.4503)  time: 0.5321  data: 0.1361  max mem: 3575
+Test:  [180/521]  eta: 0:02:55  acc1: 88.0000 (84.8840)  acc5: 95.0000 (94.5083)  time: 0.5194  data: 0.1229  max mem: 3575
+Test:  [190/521]  eta: 0:02:49  acc1: 88.0000 (84.8534)  acc5: 96.0000 (94.5497)  time: 0.4957  data: 0.0989  max mem: 3575
+Test:  [200/521]  eta: 0:02:45  acc1: 84.0000 (84.6418)  acc5: 95.0000 (94.4876)  time: 0.5272  data: 0.1299  max mem: 3575
+Test:  [210/521]  eta: 0:02:39  acc1: 84.0000 (84.7014)  acc5: 94.0000 (94.5024)  time: 0.5361  data: 0.1382  max mem: 3575
+Test:  [220/521]  eta: 0:02:34  acc1: 82.0000 (84.4751)  acc5: 94.0000 (94.4661)  time: 0.5004  data: 0.1022  max mem: 3575
+Test:  [230/521]  eta: 0:02:28  acc1: 80.0000 (84.3506)  acc5: 94.0000 (94.4329)  time: 0.4879  data: 0.0895  max mem: 3575
+Test:  [240/521]  eta: 0:02:23  acc1: 83.0000 (84.2490)  acc5: 94.0000 (94.4025)  time: 0.4885  data: 0.0899  max mem: 3575
+Test:  [250/521]  eta: 0:02:18  acc1: 83.0000 (84.0677)  acc5: 94.0000 (94.3426)  time: 0.5166  data: 0.1179  max mem: 3575
+Test:  [260/521]  eta: 0:02:13  acc1: 78.0000 (83.7011)  acc5: 93.0000 (94.2874)  time: 0.5078  data: 0.1087  max mem: 3575
+Test:  [270/521]  eta: 0:02:08  acc1: 77.0000 (83.5018)  acc5: 92.0000 (94.2546)  time: 0.4826  data: 0.0833  max mem: 3575
+Test:  [280/521]  eta: 0:02:02  acc1: 80.0000 (83.3345)  acc5: 94.0000 (94.2313)  time: 0.4962  data: 0.0966  max mem: 3575
+Test:  [290/521]  eta: 0:01:57  acc1: 82.0000 (83.3162)  acc5: 94.0000 (94.2062)  time: 0.5101  data: 0.1100  max mem: 3575
+Test:  [300/521]  eta: 0:01:52  acc1: 86.0000 (83.5282)  acc5: 95.0000 (94.2159)  time: 0.5051  data: 0.1047  max mem: 3575
+Test:  [310/521]  eta: 0:01:47  acc1: 86.0000 (83.4823)  acc5: 94.0000 (94.1897)  time: 0.5313  data: 0.1308  max mem: 3575
+Test:  [320/521]  eta: 0:01:42  acc1: 85.0000 (83.5483)  acc5: 94.0000 (94.1713)  time: 0.5184  data: 0.1179  max mem: 3575
+Test:  [330/521]  eta: 0:01:37  acc1: 83.0000 (83.3202)  acc5: 95.0000 (94.0997)  time: 0.4816  data: 0.0809  max mem: 3575
+Test:  [340/521]  eta: 0:01:32  acc1: 83.0000 (83.1877)  acc5: 94.0000 (94.0968)  time: 0.4821  data: 0.0813  max mem: 3575
+Test:  [350/521]  eta: 0:01:27  acc1: 82.0000 (83.0513)  acc5: 94.0000 (94.0741)  time: 0.4957  data: 0.0948  max mem: 3575
+Test:  [360/521]  eta: 0:01:21  acc1: 79.0000 (82.9141)  acc5: 93.0000 (94.0388)  time: 0.4960  data: 0.0948  max mem: 3575
+Test:  [370/521]  eta: 0:01:16  acc1: 81.0000 (82.9245)  acc5: 94.0000 (94.0485)  time: 0.4852  data: 0.0832  max mem: 3575
+Test:  [380/521]  eta: 0:01:11  acc1: 85.0000 (82.9501)  acc5: 94.0000 (94.0315)  time: 0.4999  data: 0.0976  max mem: 3575
+Test:  [390/521]  eta: 0:01:06  acc1: 83.0000 (82.8338)  acc5: 93.0000 (94.0000)  time: 0.4933  data: 0.0907  max mem: 3575
+Test:  [400/521]  eta: 0:01:01  acc1: 83.0000 (82.8554)  acc5: 93.0000 (93.9776)  time: 0.4805  data: 0.0777  max mem: 3575
+Test:  [410/521]  eta: 0:00:56  acc1: 84.0000 (82.8418)  acc5: 94.0000 (93.9586)  time: 0.5002  data: 0.0975  max mem: 3575
+Test:  [420/521]  eta: 0:00:51  acc1: 84.0000 (82.8717)  acc5: 94.0000 (93.9501)  time: 0.5056  data: 0.1027  max mem: 3575
+Test:  [430/521]  eta: 0:00:46  acc1: 81.0000 (82.7494)  acc5: 94.0000 (93.9350)  time: 0.4958  data: 0.0927  max mem: 3575
+Test:  [440/521]  eta: 0:00:40  acc1: 78.0000 (82.6009)  acc5: 94.0000 (93.9002)  time: 0.4872  data: 0.0840  max mem: 3575
+Test:  [450/521]  eta: 0:00:35  acc1: 81.0000 (82.5654)  acc5: 94.0000 (93.9113)  time: 0.4789  data: 0.0756  max mem: 3575
+Test:  [460/521]  eta: 0:00:30  acc1: 82.0000 (82.5770)  acc5: 94.0000 (93.9154)  time: 0.4830  data: 0.0796  max mem: 3575
+Test:  [470/521]  eta: 0:00:25  acc1: 84.0000 (82.5372)  acc5: 94.0000 (93.9066)  time: 0.5138  data: 0.1099  max mem: 3575
+Test:  [480/521]  eta: 0:00:20  acc1: 81.0000 (82.4304)  acc5: 94.0000 (93.8981)  time: 0.5073  data: 0.1032  max mem: 3575
+Test:  [490/521]  eta: 0:00:15  acc1: 82.0000 (82.4603)  acc5: 94.0000 (93.9165)  time: 0.4884  data: 0.0845  max mem: 3575
+Test:  [500/521]  eta: 0:00:10  acc1: 83.0000 (82.4691)  acc5: 95.0000 (93.9321)  time: 0.4968  data: 0.0927  max mem: 3575
+Test:  [510/521]  eta: 0:00:05  acc1: 78.0000 (82.3014)  acc5: 95.0000 (93.9217)  time: 0.4886  data: 0.0839  max mem: 3575
+Test:  [520/521]  eta: 0:00:00  acc1: 79.0000 (82.3632)  acc5: 95.0000 (93.9203)  time: 0.5036  data: 0.0985  max mem: 3575
+Test: Total time: 0:04:22 (0.5044 s / it)
+Accuracy of the network on 50000 test images: 82.36320%
